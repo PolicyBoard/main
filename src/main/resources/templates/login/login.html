@@ -1,10 +1,120 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f7f7f7;
+        }
+        .container {
+            display: flex;
+            max-width: 900px;
+            width: 100%;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .login-form {
+            padding: 40px;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        .login-form h2 {
+            margin-bottom: 20px;
+        }
+        .login-form h3 {
+            margin: 0;
+            margin-bottom: 10px;
+        }
+        .login-form p {
+            margin: 0;
+            margin-bottom: 20px;
+            color: gray;
+        }
+        .login-form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .login-form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .login-form input[type="checkbox"] {
+            width: auto;
+            margin-right: 10px;
+        }
+        .login-form button {
+            width: 100%;
+            padding: 10px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .login-form .register {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .login-form .register a {
+            color: #000;
+            text-decoration: none;
+        }
+        .illustration {
+            padding: 40px;
+            width: 50%;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+        }
+        .illustration img {
+            max-width: 100%;
+            height: auto;
+        }
+        .border {
+            border-left: 1px solid #ddd;
+        }
+    </style>
 </head>
 <body>
-
+<div class="container">
+    <div class="login-form">
+        <h2>Welcome!</h2>
+        <h3>Sign in to</h3>
+        <p>Lorem Ipsum is simply</p>
+        <form th:action="@{/login}" method="post">
+            <label for="username">User name</label>
+            <input type="text" id="username" name="username" placeholder="Enter your user name">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your Password">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <input type="checkbox" id="remember-me" name="remember-me">
+                    <label for="remember-me">Remember me</label>
+                </div>
+                <a href="#">Forgot Password?</a>
+            </div>
+            <button type="submit">Login</button>
+            <div class="register">
+                <p>Don't have an Account? <a href="#">Register</a></p>
+            </div>
+        </form>
+    </div>
+    <div class="illustration border">
+        <img src="../../static/images/1.png" alt="Illustration">
+    </div>
+</div>
 </body>
 </html>
