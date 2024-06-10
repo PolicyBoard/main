@@ -1,11 +1,11 @@
-create database policyboard;
+DROP DATABASE policyboard;
+CREATE DATABASE policyboard;
+USE policyboard;
 
-
-use policyboard;
-
-
+-- Member Table
 CREATE TABLE Member (
-    nickname VARCHAR(50) PRIMARY KEY,
+    member_id INT AUTO_INCREMENT PRIMARY KEY,
+    nickname VARCHAR(50) UNIQUE,
     email VARCHAR(100) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
     points INT DEFAULT 0
@@ -30,8 +30,10 @@ CREATE TABLE Post (
 -- Comment Table
 CREATE TABLE Comment (
     comment_id INT AUTO_INCREMENT PRIMARY KEY,
+    post_id INT NOT NULL,
     author VARCHAR(50) NOT NULL,
     content TEXT NOT NULL,
     likes INT DEFAULT 0,
+    FOREIGN KEY (post_id) REFERENCES Post(post_id) ON DELETE CASCADE,
     FOREIGN KEY (author) REFERENCES Member(nickname) ON DELETE CASCADE
 );
