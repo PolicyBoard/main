@@ -1,4 +1,9 @@
--- Member Table
+create database policyboard;
+
+
+use policyboard;
+
+
 CREATE TABLE Member (
     nickname VARCHAR(50) PRIMARY KEY,
     email VARCHAR(100) NOT NULL UNIQUE,
