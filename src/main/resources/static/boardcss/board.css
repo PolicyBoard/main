@@ -1,0 +1,22 @@
+.c_header{
+
+    border : 1px solid;
+    width: 60%;
+    height: 500px;
+    margin: auto;
+
+}
+
+.c_content{
+    border : 1px solid;
+    width: 60%;
+    height: 1000px;
+    margin: auto;
+}
+.c_notice{
+
+    border : 1px solid;
+    width: 60%;
+    height: 500px;
+    margin: auto;
+}

@@ -1,6 +1,7 @@
 package com.ohgiraffers.policykorea.board;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -8,9 +9,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class BoardController {
 
 
-    @RequestMapping("/view")
-    public String boardmain(){
+    @GetMapping("/board")
+    public String board(){
 
-        return "board";
+        return "/board/board";
     }
+
+    @GetMapping("/setboard")
+    public String setBoard(){
+
+        return "/board/setBoard";
+    }
+
 }
