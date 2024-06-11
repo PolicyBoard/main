@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Register Page</title>
-    <link rel="stylesheet" href="../../static/signup/signup.css">
+    <link rel="stylesheet" th:href="@{/signup.css}" href="/signup.css" />
 </head>
 <body>
 <div class="container">
@@ -27,12 +27,13 @@
 
             <button type="submit">Register</button>
             <div class="login">
-                <p>Already have an account? <a href="#">Login</a></p>
+                <p>Already have an account? <a href="/login">Login</a></p>
             </div>
         </form>
     </div>
     <div class="illustration">
-        <img src="../../static/images/1.png" alt="Illustration"/>
+        <img th:src="@{'/1.png'}" alt="img"/>
+
     </div>
 </div>
 </body>
