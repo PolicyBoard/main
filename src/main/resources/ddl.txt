@@ -1,3 +1,4 @@
+GRANT ALL PRIVILEGES ON policyboard.* TO 'sahmyook'@'%';
 DROP DATABASE policyboard;
 CREATE DATABASE policyboard;
 USE policyboard;
