@@ -1,41 +1,46 @@
 package com.ohgiraffers.policykorea.board;
 
 public class Post {
-    private int postId;
+    private int post_id;
     private String title;
     private String content;
     private String author;
     private String location;
     private String gender;
-    private String startTime;
-    private String endTime;
+    private String start_time;
+    private String end_time;
     private String status;
     private int likes;
     private int reports;
 
-    // Getter와 Setter 메서드 생략
+    private String url;
 
-    public Post(int postId, String title, String content, String author, String location, String gender, String startTime, String endTime, String status, int likes, int reports) {
-        this.postId = postId;
+    public Post() {
+    }
+
+    public Post(int post_id, String title, String content, String author, String location, String gender, String start_time, String end_time, String status, int likes, int reports, String url) {
+        this.post_id = post_id;
         this.title = title;
         this.content = content;
         this.author = author;
         this.location = location;
         this.gender = gender;
-        this.startTime = startTime;
-        this.endTime = endTime;
+        this.start_time = start_time;
+        this.end_time = end_time;
         this.status = status;
         this.likes = likes;
         this.reports = reports;
+        this.url = url;
+    }
+// Getter와 Setter 메서드 생략
+
+
+    public int getPost_id() {
+        return post_id;
     }
 
-    public int getPostId() {
-        System.out.println();
-        return postId;
-    }
-
-    public void setPostId(int postId) {
-        this.postId = postId;
+    public void setPost_id(int post_id) {
+        this.post_id = post_id;
     }
 
     public String getTitle() {
@@ -78,20 +83,20 @@ public class Post {
         this.gender = gender;
     }
 
-    public String getStartTime() {
-        return startTime;
+    public String getStart_time() {
+        return start_time;
     }
 
-    public void setStartTime(String startTime) {
-        this.startTime = startTime;
+    public void setStart_time(String start_time) {
+        this.start_time = start_time;
     }
 
-    public String getEndTime() {
-        return endTime;
+    public String getEnd_time() {
+        return end_time;
     }
 
-    public void setEndTime(String endTime) {
-        this.endTime = endTime;
+    public void setEnd_time(String end_time) {
+        this.end_time = end_time;
     }
 
     public String getStatus() {
@@ -118,23 +123,29 @@ public class Post {
         this.reports = reports;
     }
 
-    public Post() {
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     @Override
     public String toString() {
         return "Post{" +
-                "postId=" + postId +
+                "post_id=" + post_id +
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 ", author='" + author + '\'' +
                 ", location='" + location + '\'' +
                 ", gender='" + gender + '\'' +
-                ", startTime='" + startTime + '\'' +
-                ", endTime='" + endTime + '\'' +
+                ", start_time='" + start_time + '\'' +
+                ", end_time='" + end_time + '\'' +
                 ", status='" + status + '\'' +
                 ", likes=" + likes +
                 ", reports=" + reports +
+                ", url='" + url + '\'' +
                 '}';
     }
 }

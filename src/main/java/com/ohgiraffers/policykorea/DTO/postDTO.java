@@ -16,4 +16,5 @@ public class postDTO {
     private String status;
     private int likes;
     private int reports;
+    private String url;
 }

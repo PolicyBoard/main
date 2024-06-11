@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 @RequestMapping("/board")
@@ -24,10 +23,9 @@ public class PostController {
 
     @PostMapping("/insert")
     public String savePost(@ModelAttribute("post") Post post) {
-        System.out.println(post.getAuthor());
         postService.insertPost(post);
 
-        return "redirect:/board/post?id="+post.getPostId();
+        return "redirect:/board/post?id="+post.getPost_id();
     }
 
    /* @GetMapping("/edit/{id}")
@@ -60,7 +58,7 @@ public class PostController {
     @GetMapping("/delete")
     public String deletePost(@RequestParam("id") int id) {
         Post post = postService.getPostById(id);
-        System.out.println(post.getPostId());
+        System.out.println(post.getPost_id());
         postService.deletePost(id);
         return "redirect:/";
     }
@@ -74,8 +72,8 @@ public class PostController {
     public String getPostById(@RequestParam("id") int id, Model model) {
         System.out.println(id);
         Post post = postService.getPostById(id);
-        System.out.println(post.getPostId());
-        System.out.println(post.getStartTime());
+        System.out.println(post.getPost_id());
+        System.out.println(post.getStart_time());
         System.out.println(post.getTitle());
         model.addAttribute("post", post);
         return "board/board";
@@ -94,10 +92,10 @@ public class PostController {
 
     @PostMapping("/update")
     public String updatePost(@ModelAttribute("post") Post post) {
-        System.out.println(post.getPostId());
+        System.out.println(post.getPost_id());
         postService.updatePost(post);
 
-        return "redirect:/board/post?id="+post.getPostId();
+        return "redirect:/board/post?id="+post.getPost_id();
     }
 
 }

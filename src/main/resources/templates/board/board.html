@@ -9,12 +9,12 @@
 <div class="c_header">
     <h1>글 제목 : <span th:text="${post.title}"></span></h1>
     <h3>작성자 : <span th:text="${post.author}"></span></h3>
-    <h3>url : <span th:text="${post.location}"></span></h3>
-    <h3>일정 : <span th:text="${post.startTime}"></span> ~ <span th:text="${post.endTime}"></span></h3>
+    <h3>url : <span th:text="${post.url}"></span></h3>
+    <h3>일정 : <span th:text="${post.start_time}"></span> ~ <span th:text="${post.end_time}"></span></h3>
     <h3>상태 : <span th:text="${post.status}"></span></h3>
-    <h3>작성 : <span th:text="${post.startTime}"></span></h3>
-    <h3>최종수정 : <span th:text="${post.endTime}"></span></h3>
-    <span th:text="${post.postId}"></span>
+    <h3>작성 : <span th:text="${post.start_time}"></span></h3>
+    <h3>최종수정 : <span th:text="${post.end_time}"></span></h3>
+
 </div>
 <div class="c_content">
     <label>컨텐츠</label>
@@ -25,6 +25,7 @@
     <form th:action="@{/board/setboard}"  method="get">
         <button type="submit">수정</button>
         <button type="submit">삭제</button>
+
     </form>
 
     <label>댓글</label>
