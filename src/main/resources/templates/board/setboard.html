@@ -6,23 +6,29 @@
     <link rel="stylesheet" th:href="@{/boardcss/board.css}" />
 </head>
 <body>
-<form action="/board/board" method="get">
+<form action="/board/update" method="post">
 <div class="c_header">
 
-<h1>글 제목 : <input type="text"/></h1>
-<h3>작성자 : </h3>
+<h1>글 제목 : <input type="text" th:value="${post.title}" name="title"/></h1>
+<h3>작성자 : <span th:text="${post.title}"></span></h3>
 <h3>url : <input type="text"/></h3>
 <h3>일정 : <input type="text"/></h3>
 <h3>상태 : <input type="text"/></h3>
+    <span th:text="${post.postId}"></span>
 </div>
 <div class="c_content">
 
     <label>컨텐츠</label>
+    <textarea th:text="${post.content}" name="content"></textarea>
+
 
 </div>
     <div class="c_notice">
     <button type="submit">수정</button>
     </div>
+
+    <input type="hidden" name="postId" th:value="${post.postId}">
+    <input type="hidden" name="author" th:value="${post.author}">
 </form>
 
 
