@@ -3,8 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+    <div class="list">
+        <div class="div">
+            <div class="filter">
+                <img class="img" src="img/filter.svg" />
+                <div class="label">Filter</div>
+            </div>
+            <div class="search">
+                <img class="img" src="img/search.svg" />
+                <div class="text-wrapper">제목으로 검색</div>
+            </div>
+            <div class="text-wrapper-2">logo</div>
 
+            <!-- 게시물 목록을 반복하여 표시 -->
+<!--            제목 이미지에 링크
+?post_id-->
+            <div th:each="post : ${posts}" class="overlap-group">
+                <div class="rectangle"></div>
+                <img class="rectangle-2" th:src="@{${post.imageUrl}}" />
+                <div class="text-wrapper-3">이미지</div>
+                <p class="text-wrapper-4" th:text="${post.title} + '[' + ${post.commentsCount} + ']'"></p>
+                <div class="text-wrapper-5" th:text="'지역 : ' + ${post.region}"></div>
+                <div class="text-wrapper-6" th:text="'대상성별 : ' + ${post.gender}"></div>
+                <div class="text-wrapper-7" th:text="'시작 기간 : ' + ${post.startDate}"></div>
+                <div class="text-wrapper-8" th:text="'종료기간 : ' + ${post.endDate}"></div>
+                <div class="text-wrapper-9" th:text="'진행상태 : ' + ${post.status}"></div>
+            </div>
+
+            <p class="element">&lt;- 1 2 3 4 5 6 7 8 9 10 -&gt;</p>
+            <div class="overlap-group-2">
+                <div class="overlap-3">
+                    <div class="text-wrapper-10">지역</div>
+                </div>
+                <div class="text-wrapper-11">성별</div>
+                <div class="text-wrapper-12">진행상태</div>
+                <div class="overlap-4"></div>
+                <div class="arrow-wrapper"><img class="arrow" src="img/arrow-4.svg" /></div>
+                <div class="img-wrapper"><img class="arrow" src="img/arrow-3.svg" /></div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
