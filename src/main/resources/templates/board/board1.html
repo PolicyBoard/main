@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/boardcss/board.css}" />
+</head>
+<body>
+<div class="c_header">
+    <h1>글 제목 : </h1>
+    <h3>작성자 : </h3>
+    <h3>url : </h3>
+    <h3>일정 : </h3>
+    <h3>상태 : </h3>
+    <h3>작성 :</h3>
+    <h3>최종수정 :</h3>
+</div>
+<div class="c_content">
+
+    <label>컨텐츠</label>
+
+
+
+</div>
+
+<div class="c_notice">
+    <form th:action="@{/board/setboard}"  method="get">
+        <button type="submit">수정</button>
+        <button type="submit">삭제</button>
+    </form>
+
+    <label>댓글</label>
+
+</div>
+</body>
+</html>
