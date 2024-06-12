@@ -1,28 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>글 작성</title>
     <link rel="stylesheet" th:href="@{/boardcss/board.css}" />
+
+    <!-- Load CKEditor from CDN -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
 </head>
 <body>
 <div class="c_header">
-<form action="/board/insert" method="post">
-    <h1>글 제목 : <input type="text" name="title"/></h1>
-    <h3>url : <input type="text" name="url"/></h3>
-    <h3>일정 : <!--<input type="text" name="start_time"/>~<input type="text" name="start_time"/></h3>-->
-    <h3>상태 : <input type="text" name="status"/></h3>
+    <form action="/board/insert" method="post">
+        <h1>글 제목 : <input type="text" name="title"/></h1>
+        <h3>url : <input type="text" name="url"/></h3>
+        <h3>일정 : <!--<input type="text" name="start_time"/>~<input type="text" name="end_time"/>--></h3>
+        <h3>상태 : <input type="text" name="status"/></h3>
 
+        내용 :<br/>
+        <textarea name="content" id="editor"></textarea>
 
-     내용 :<br/>
-        <textarea name="content">dd</textarea>
-
-
-    <button type="submit">글쓰기</button>
-<input type="hidden" name="author" value="user1">
-
-</form>
+        <button type="submit">글쓰기</button>
+        <input type="hidden" name="author" value="user1">
+    </form>
 </div>
 
+<!-- Initialize CKEditor -->
+<script>
+    ClassicEditor
+        .create(document.querySelector('#editor'), {
+            ckfinder: {
+                uploadUrl: '/board/ckfinder/connector',
+                options: {
+                    resourceType: 'Images'
+                }
+            },
+        })
+        .then(editor => {
+            console.log('Editor was initialized', editor);
+        })
+        .catch(error => {
+            console.error('There was a problem initializing the editor.', error);
+        });
+</script>
 </body>
 </html>
