@@ -1,34 +1,34 @@
 package com.ohgiraffers.policykorea.mainpage.dto;
 
 public class PostDTO {
-
     private int postId;
     private String title;
     private String content;
-    private String region;
+    private String author;
+    private String location;
     private String gender;
-    private String startDate;
-    private String endDate;
+    private String startTime;
+    private String endTime;
     private String status;
-    private int commentsCount;
-    private String imageUrl;
+    private int likes;
+    private int reports;
 
-    public PostDTO() {
-    }
-
-    public PostDTO(int postId, String title, String content, String region, String gender, String startDate, String endDate, String status, int commentsCount, String imageUrl) {
+    // Constructor
+    public PostDTO(int postId, String title, String content, String author, String location, String gender, String startTime, String endTime, String status, int likes, int reports) {
         this.postId = postId;
         this.title = title;
         this.content = content;
-        this.region = region;
+        this.author = author;
+        this.location = location;
         this.gender = gender;
-        this.startDate = startDate;
-        this.endDate = endDate;
+        this.startTime = startTime;
+        this.endTime = endTime;
         this.status = status;
-        this.commentsCount = commentsCount;
-        this.imageUrl = imageUrl;
+        this.likes = likes;
+        this.reports = reports;
     }
 
+    // Getters and Setters
     public int getPostId() {
         return postId;
     }
@@ -53,12 +53,20 @@ public class PostDTO {
         this.content = content;
     }
 
-    public String getRegion() {
-        return region;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setRegion(String region) {
-        this.region = region;
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public String getGender() {
@@ -69,20 +77,20 @@ public class PostDTO {
         this.gender = gender;
     }
 
-    public String getStartDate() {
-        return startDate;
+    public String getStartTime() {
+        return startTime;
     }
 
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
     }
 
-    public String getEndDate() {
-        return endDate;
+    public String getEndTime() {
+        return endTime;
     }
 
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
     }
 
     public String getStatus() {
@@ -93,20 +101,20 @@ public class PostDTO {
         this.status = status;
     }
 
-    public int getCommentsCount() {
-        return commentsCount;
+    public int getLikes() {
+        return likes;
     }
 
-    public void setCommentsCount(int commentsCount) {
-        this.commentsCount = commentsCount;
+    public void setLikes(int likes) {
+        this.likes = likes;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public int getReports() {
+        return reports;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setReports(int reports) {
+        this.reports = reports;
     }
 
     @Override
@@ -115,14 +123,15 @@ public class PostDTO {
                 "postId=" + postId +
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
-                ", region='" + region + '\'' +
+                ", author='" + author + '\'' +
+                ", location='" + location + '\'' +
                 ", gender='" + gender + '\'' +
-                ", startDate='" + startDate + '\'' +
-                ", endDate='" + endDate + '\'' +
+                ", startTime='" + startTime + '\'' +
+                ", endTime='" + endTime + '\'' +
                 ", status='" + status + '\'' +
-                ", commentsCount=" + commentsCount +
-                ", imageUrl='" + imageUrl + '\'' +
+                ", likes=" + likes +
+                ", reports=" + reports +
                 '}';
     }
-
 }
+

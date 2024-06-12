@@ -1,39 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" th:href="@{/style.css}" />
 </head>
 <body>
     <div class="list">
         <div class="div">
             <div class="filter">
-                <img class="img" src="img/filter.svg" />
+<!--                <img class="img" src="img/filter.svg" />-->
                 <div class="label">Filter</div>
             </div>
             <div class="search">
-                <img class="img" src="img/search.svg" />
+<!--                <img class="img" src="img/search.svg" />-->
                 <div class="text-wrapper">제목으로 검색</div>
             </div>
             <div class="text-wrapper-2">logo</div>
+            <button class="login-btn">로그인</button>
 
             <!-- 게시물 목록을 반복하여 표시 -->
-<!--            제목 이미지에 링크
-?post_id-->
-            <div th:each="post : ${posts}" class="overlap-group">
+<!--            <div th:each="post : ${mainpage}" class="overlap-group" th:style="'top:' + (${post.postId} * 120 + 87) + 'px'">-->
+                <div th:each="post, iterStat : ${mainpage}" class="overlap-group"
+                     th:style="'top:' + (${iterStat.index % 10 * 120 + 207}) + 'px'">
+
                 <div class="rectangle"></div>
-                <img class="rectangle-2" th:src="@{${post.imageUrl}}" />
+<!--                <img class="rectangle-2" th:src="@{${post.imageUrl}}" />-->
+                    <img class="rectangle-2"/>
                 <div class="text-wrapper-3">이미지</div>
-                <p class="text-wrapper-4" th:text="${post.title} + '[' + ${post.commentsCount} + ']'"></p>
-                <div class="text-wrapper-5" th:text="'지역 : ' + ${post.region}"></div>
+                    <!-- 제목을 클릭하면 해당 게시물의 내용을 보여주는 페이지로 이동 -->
+                    <a th:href="@{'/post/content?p=' + ${post.postId}}">
+                        <p class="text-wrapper-4" th:text="${post.title}"></p>
+                    </a>
+                    <div class="text-wrapper-5" th:text="'지역 : ' + ${post.location}"></div>
                 <div class="text-wrapper-6" th:text="'대상성별 : ' + ${post.gender}"></div>
-                <div class="text-wrapper-7" th:text="'시작 기간 : ' + ${post.startDate}"></div>
-                <div class="text-wrapper-8" th:text="'종료기간 : ' + ${post.endDate}"></div>
+                <div class="text-wrapper-7" th:text="'시작기간 : ' + ${post.startTime}"></div>
+                <div class="text-wrapper-8" th:text="'종료기간 : ' + ${post.endTime}"></div>
                 <div class="text-wrapper-9" th:text="'진행상태 : ' + ${post.status}"></div>
             </div>
 
-            <p class="element">&lt;- 1 2 3 4 5 6 7 8 9 10 -&gt;</p>
+            <div class="pagination">
+                <p class="element">
+                    <a th:href="@{/post/mainpage/1}">&lt;-</a>
+                    <span th:each="i : ${#numbers.sequence(1, totalPages)}">
+                        <a th:href="@{/post/mainpage/{pageNum}(pageNum=${i})}" th:text="${i}"></a>
+                    </span>
+                    <a th:href="@{/post/mainpage/{pageNum}(pageNum=${totalPages})}">-&gt;</a>
+                </p>
+            </div>
+<!--            <p class="element">&lt;- 1 2 3 4 5 6 7 8 9 10 -&gt;</p>-->
             <div class="overlap-group-2">
                 <div class="overlap-3">
                     <div class="text-wrapper-10">지역</div>
@@ -41,8 +56,10 @@
                 <div class="text-wrapper-11">성별</div>
                 <div class="text-wrapper-12">진행상태</div>
                 <div class="overlap-4"></div>
-                <div class="arrow-wrapper"><img class="arrow" src="img/arrow-4.svg" /></div>
-                <div class="img-wrapper"><img class="arrow" src="img/arrow-3.svg" /></div>
+<!--                <div class="arrow-wrapper"><img class="arrow" src="img/arrow-4.svg" /></div>-->
+<!--                <div class="img-wrapper"><img class="arrow" src="img/arrow-3.svg" /></div>-->
+                <div class="arrow-wrapper"></div>
+                <div class="img-wrapper"></div>
             </div>
         </div>
     </div>
