@@ -30,12 +30,12 @@ public class PostController {
     // 첫 페이지를 보여주는 메서드
     @GetMapping("/firstpage")
     public String getFirstPage(Model model) {
-        return getPage("none","none",1, model);
+        return getPage("","none","none",1, model);
     }
 
     // 특정 페이지를 보여주는 메서드
     @GetMapping("/mainpage/{pageNum}")
-    public String getPage(@RequestParam(required = false) String active, @RequestParam(required = false) String gender, @PathVariable int pageNum, Model model) {
+    public String getPage(@RequestParam(required = false) String search, @RequestParam(required = false) String active, @RequestParam(required = false) String gender, @PathVariable int pageNum, Model model) {
         int pageSize = 10; // 페이지당 게시물 수
         model.addAttribute("currentPage", pageNum);
 
@@ -53,6 +53,12 @@ public class PostController {
 
         } else {
             posts = posts.stream().filter(value -> value.getStatus().equals(active)).collect(Collectors.toList());
+        }
+
+        if (search == null) {
+
+        } else {
+            posts = posts.stream().filter(value -> value.getTitle().contains(search)).collect(Collectors.toList());
         }
 
         int maxIndex = Math.min(pageSize * pageNum, posts.size());
