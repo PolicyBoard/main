@@ -1,24 +1,77 @@
 .c_header{
 
     border : 1px solid;
-    width: 60%;
-    height: 1000px;
-    margin: auto;
-
-}
-
-.c_content{
-    border : 1px solid;
-    width: 60%;
-    height: 1000px;
-    margin: auto;
-}
-.c_notice{
-
-    border : 1px solid;
-    width: 60%;
+    width: 1200px;
     height: 500px;
     margin: auto;
+
 }
 
-.ck-editor__editable { height: 400px; }
+.c_header2{
+
+    border : 1px solid;
+    width: 1200px;
+    height: 1200px;
+    margin: auto;
+
+}
+.c_content{
+    border : 1px solid;
+    width: 1200px;
+    height: 1000px;
+    margin: auto;
+}
+.c_notice {
+    position: relative;
+    border: 1px solid;
+    width: 1200px;
+    min-height: 500px; /* 최소 높이를 설정하여 내용이 많아지면 높이가 늘어나도록 함 */
+    margin: 20px auto; /* 상단과 하단에 20px의 간격을 추가하여 요소 간의 간격을 설정 */
+}
+
+.c_notice2{
+
+    border : 1px solid;
+    width: 1200px;
+    height: 100px;
+    margin: auto;
+}
+
+.ck-editor__editable { height: 800px; }
+
+.c_content img {
+    max-width: 500px;
+    max-height: 500px;
+    width: auto;
+    height: auto;
+}
+.manage{
+
+}
+
+#custom_textarea {
+    width: 1000px;
+    height: 70px;
+    font-size: 18px;
+    background-color: #8b8b8b1c;
+    resize: none;
+    color: black;
+    border: none;
+
+    outline: none;
+}
+
+button {
+    border : 1px solid;
+    background: white;
+    height: 50px;
+    width: 100px;
+
+    margin: 0 auto;
+    cursor: pointer;
+    border-radius: 4px;
+}
+.line-through {
+    text-decoration: line-through;
+}
+

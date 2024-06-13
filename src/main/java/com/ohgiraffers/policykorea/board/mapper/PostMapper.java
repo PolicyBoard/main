@@ -29,4 +29,7 @@ public interface PostMapper {
 
     @Delete("DELETE FROM Post WHERE post_id = #{id}")
     void delete(int id);
+
+    @Update("UPDATE Post SET reports = reports + 1 WHERE post_id = #{post_id}")
+    void report(int post_id);
 }

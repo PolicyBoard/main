@@ -33,6 +33,12 @@ public class PostService {
 
     }
 
+    public void reportPost(int post_id) {
+
+        postMapper.report(post_id);
+
+    }
+
     public void deletePost(int id) {
         postMapper.delete(id);
     }
