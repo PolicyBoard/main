@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register Page</title>
+    <link rel="stylesheet" th:href="@{/signup.css}" href="/signup.css" />
+    <!-- jQuery 추가 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- notify.js 추가 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="register-form">
+        <h2>SignUp!</h2>
+        <h3>Create your account</h3>
+        <p>아래에 정보를 입력해 주세요.</p>
+
+        <form id="register-form" action="/signup/register" method="post">
+            <label for="nickname">Nickname</label>
+            <input type="text" id="nickname" name="nickname" placeholder="Enter your nickname" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your Password" required>
+
+            <label for="confirm-password">Confirm Password</label>
+            <input type="password" id="confirm-password" name="confirmPassword" placeholder="Confirm your Password" required>
+
+            <button type="submit">Register</button>
+            <div class="login">
+                <p>Already have an account? <a href="/login/login">Login</a></p>
+            </div>
+        </form>
+    </div>
+    <div class="illustration">
+        <img th:src="@{'/1.png'}" alt="img"/>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('#register-form').on('submit', function(event) {
+            var password = $('#password').val();
+            var confirmPassword = $('#confirm-password').val();
+
+            if (password !== confirmPassword) {
+                event.preventDefault();
+                $.notify("Passwords do not match!", "error");
+            } else {
+                alert("Passwords match. Form will be submitted.");
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
