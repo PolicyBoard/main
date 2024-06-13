@@ -9,7 +9,7 @@ import java.util.List;
 @Mapper
 public interface CommentMapper {
 
-    @Select("SELECT * FROM Comment WHERE post_id = #{id}")
+    @Select("SELECT * FROM Comment WHERE post_id = #{id} ORDER BY likes desc")
     List<Comment> findByCommentId(int id);
 
 

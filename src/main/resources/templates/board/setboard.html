@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" th:href="@{/boardcss/board.css}" />
+    <link rel="stylesheet" th:href="@{/boardcss/setboard.css}" />
     <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
 </head>
 <body>
@@ -33,7 +33,10 @@
     </select>
     </h3>
 
-    <h3>일정 : <span th:text="${post.start_time}"></span> ~ <span th:text="${post.end_time}"></span></h3>
+    <h3>일정 :
+        <input type="text" name="start_time" th:value="${post.start_time}" placeholder="시작 시간"/> ~
+        <input type="text" name="end_time" th:value="${post.end_time}" placeholder="종료 시간"/>
+    </h3>
 
     <h3>상태 :
         <select name="status">
