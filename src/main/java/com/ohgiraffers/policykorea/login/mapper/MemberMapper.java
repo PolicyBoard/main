@@ -25,4 +25,12 @@ public interface MemberMapper {
     @Delete("DELETE FROM members WHERE member_id = #{id}")
     void delete(Long id);
 
+    @Select("SELECT COUNT(*) FROM members WHERE email = #{email}")
+    int countByEmail(String email);
+
+
+    @Select("SELECT COUNT(*) FROM members WHERE id = #{id}")
+    int countById(String id);
 }
+
+

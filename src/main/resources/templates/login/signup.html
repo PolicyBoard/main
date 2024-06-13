@@ -12,7 +12,7 @@
         <h3>Create your account</h3>
         <p>아래에 정보를 입력해 주세요.</p>
 
-        <form th:action="@{/register}" method="post">
+        <form th:action="@{/signup/register}" method="post">
             <label for="nickname">Nickname</label>
             <input type="text" id="nickname" name="nickname" placeholder="Enter your nickname" required>
 
@@ -34,6 +34,12 @@
     <div class="illustration">
         <img th:src="@{'/1.png'}" alt="img"/>
 
+    </div>
+    <div th:if="${signupError}" class="error">
+        <p th:text="${signupError}"></p>
+        <div class="error">
+            <p>회원가입에 실패했습니다. 다시 시도해주세요.</p>
+        </div>
     </div>
 </div>
 </body>
