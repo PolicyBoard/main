@@ -1,7 +1,7 @@
 package com.ohgiraffers.policykorea.mainpage.controller;
 
-import com.ohgiraffers.policykorea.mainpage.dto.PostDTO;
-import com.ohgiraffers.policykorea.mainpage.service.PostService;
+import com.ohgiraffers.policykorea.mainpage.dto.PostDTO1;
+import com.ohgiraffers.policykorea.mainpage.service.PostService1;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,10 +16,10 @@ import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/post")
-public class PostController {
+public class PostController1 {
 
     @Autowired
-    private PostService postService;
+    private PostService1 postService;
 
 //    @GetMapping("/mainpage")
 //    public String getAllPosts(Model model) {
@@ -39,7 +39,7 @@ public class PostController {
         int pageSize = 10; // 페이지당 게시물 수
         model.addAttribute("currentPage", pageNum);
 
-        List<PostDTO> posts;
+        List<PostDTO1> posts;
         if (!Objects.equals(gender, "none") && gender != null) {
             posts = postService.getPostsByGender(gender);
         } else {
@@ -75,7 +75,7 @@ public class PostController {
         return "mainpage/mainpage";
     }
 
-    public PostController(PostService postService) {
+    public PostController1(PostService1 postService) {
         this.postService = postService;
     }
 
@@ -83,7 +83,7 @@ public class PostController {
     @GetMapping("/content")
     public String showPostContent(@RequestParam("p") Long postId, Model model) {
         // postId에 해당하는 게시물 정보 가져오기
-        PostDTO post = postService.getPostById(postId);
+        PostDTO1 post = postService.getPostById(postId);
 
         // 가져온 게시물 정보를 모델에 추가하여 뷰에 전달
         model.addAttribute("post", post);

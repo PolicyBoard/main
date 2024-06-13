@@ -1,6 +1,6 @@
 package com.ohgiraffers.policykorea.mainpage.dto;
 
-public class PostDTO {
+public class PostDTO1 {
     private int postId;
     private String title;
     private String content;
@@ -14,7 +14,7 @@ public class PostDTO {
     private int reports;
 
     // Constructor
-    public PostDTO(int postId, String title, String content, String author, String location, String gender, String startTime, String endTime, String status, int likes, int reports) {
+    public PostDTO1(int postId, String title, String content, String author, String location, String gender, String startTime, String endTime, String status, int likes, int reports) {
         this.postId = postId;
         this.title = title;
         this.content = content;
