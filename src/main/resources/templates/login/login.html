@@ -1,10 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Login Page</title>
+    <link rel="stylesheet" th:href="@{/login.css}" href="/login.css">
 </head>
 <body>
-
+<div class="container">
+    <div class="login-form">
+        <h2>Welcome!</h2>
+        <h3>Sign in to</h3>
+        <p>Lorem Ipsum is simply</p>
+        <form th:action="@{/login/insertlogin}" method="post">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <input type="checkbox" id="remember-me" name="remember-me">
+                    <label for="remember-me">Remember me</label>
+                </div>
+                <a href="#">Forgot Password?</a>
+            </div>
+            <button type="submit">Login</button>
+            <div class="register">
+                <p>Don't have an Account? <a href="/signup">Register</a></p>
+            </div>
+        </form>
+    </div>
+    <div class="illustration">
+        <img th:src="@{/1.png}" alt="illustration"/>
+    </div>
+</div>
 </body>
 </html>
