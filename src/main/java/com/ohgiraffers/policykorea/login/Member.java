@@ -8,6 +8,7 @@ public class Member {
     private String password;
     private int points;
 
+
     public Member(Long memberId, String nickname, String email, String password, int points) {
         this.memberId = memberId;
         this.nickname = nickname;

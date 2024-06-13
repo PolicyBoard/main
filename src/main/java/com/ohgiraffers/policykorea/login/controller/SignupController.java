@@ -23,7 +23,8 @@ public class SignupController {
     }
 
     @GetMapping("")
-    public String signupPage() {
+    public String signupPage(Model model) {
+        model.addAttribute("member", new Member()); // 빈 Member 객체를 모델에 추가
         return "login/signup";
     }
 
@@ -42,9 +43,10 @@ public class SignupController {
         boolean exists = signupService.isIdExists(id);
         return ResponseEntity.ok(exists);
     }
+
     @PostMapping("/register")
     public String processSignup(@ModelAttribute Member member, Model model) {
-        System.out.println("SignupController");
+        logger.info("SignupController - Registering member: {}", member);
         boolean signupSuccess = signupService.signup(member);
         if (signupSuccess) {
             // 회원가입 성공 시 메인 페이지로 리다이렉트

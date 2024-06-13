@@ -15,7 +15,7 @@ public interface MemberMapper {
     @Select("SELECT * FROM members WHERE member_id = #{id}")
     Optional<Member> findById(Long id);
 
-    @Insert("INSERT INTO members(nickname, email, password, points) VALUES(#{nickname}, #{email}, #{password}, #{points})")
+    @Insert("INSERT INTO members(nickname, email, password ) VALUES(#{nickname}, #{email}, #{password} ")
     @Options(useGeneratedKeys = true, keyProperty = "memberId")
     void insert(Member member);
 
@@ -32,5 +32,7 @@ public interface MemberMapper {
     @Select("SELECT COUNT(*) FROM members WHERE id = #{id}")
     int countById(String id);
 }
+
+
 
 

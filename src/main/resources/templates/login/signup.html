@@ -33,13 +33,13 @@
     </div>
     <div class="illustration">
         <img th:src="@{'/1.png'}" alt="img"/>
-
     </div>
     <div th:if="${signupError}" class="error">
         <p th:text="${signupError}"></p>
         <div class="error">
             <p>회원가입에 실패했습니다. 다시 시도해주세요.</p>
         </div>
+
     </div>
 </div>
 </body>
