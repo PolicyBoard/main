@@ -85,6 +85,7 @@
             const genderSelect = document.getElementById('gender-select');
             const activeSelect = document.getElementById('active-select');
             const getSearch = document.getElementById('get-search');
+            const orderLikes = document.getElementById('recommend-select');
             const confirmButton = document.querySelector('.confirm-button');
 
             // 확인 버튼 클릭 시 이벤트 처리
@@ -93,20 +94,22 @@
                 const selectedGender = genderSelect.value;
                 const selectedActive = activeSelect.value;
                 const selectedSearch = getSearch.value;
+                const selectedOrder = orderLikes.value;
                 // 성별 선택에 따라 AJAX 요청을 보냄
-                fetchPosts(selectedGender, selectedActive, selectedSearch);
+                fetchPosts(selectedGender, selectedActive, selectedSearch, selectedOrder);
             });
             document.addEventListener("keydown", function (event){
                 if (event.keyCode == 13) {
                     const selectedGender = genderSelect.value;
                     const selectedActive = activeSelect.value;
                     const selectedSearch = getSearch.value;
+                    const selectedOrder = orderLikes.value;
                     // 성별 선택에 따라 AJAX 요청을 보냄
-                    fetchPosts(selectedGender, selectedActive, selectedSearch);
+                    fetchPosts(selectedGender, selectedActive, selectedSearch, selectedOrder);
                 }
             })
 
-            function fetchPosts(gender, active, search) {
+            function fetchPosts(gender, active, search, likes) {
                 let url = '/post/mainpage/1'; // 수정된 URL
 
                 url += '?gender=' + gender; // gender 파라미터 추가
@@ -114,6 +117,8 @@
                 url += '&active=' + active;
 
                 url += '&search=' + search;
+
+                url += '&likes=' + likes;
 
                 location.href = url;
                 // fetch(url)

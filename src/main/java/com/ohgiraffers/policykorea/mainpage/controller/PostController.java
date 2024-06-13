@@ -30,17 +30,14 @@ public class PostController {
     // 첫 페이지를 보여주는 메서드
     @GetMapping("/firstpage")
     public String getFirstPage(Model model) {
-        return getPage("","none","none",1, model);
+        return getPage("none", "","none","none",1, model);
     }
 
     // 특정 페이지를 보여주는 메서드
     @GetMapping("/mainpage/{pageNum}")
-    public String getPage(@RequestParam(required = false) String search, @RequestParam(required = false) String active, @RequestParam(required = false) String gender, @PathVariable int pageNum, Model model) {
+    public String getPage(@RequestParam(required = false) String likes, @RequestParam(required = false) String search, @RequestParam(required = false) String active, @RequestParam(required = false) String gender, @PathVariable int pageNum, Model model) {
         int pageSize = 10; // 페이지당 게시물 수
         model.addAttribute("currentPage", pageNum);
-
-        System.out.println(gender);
-        System.out.println(active);
 
         List<PostDTO> posts;
         if (!Objects.equals(gender, "none") && gender != null) {
@@ -59,6 +56,14 @@ public class PostController {
 
         } else {
             posts = posts.stream().filter(value -> value.getTitle().contains(search)).collect(Collectors.toList());
+        }
+
+        if (likes == null || Objects.equals(likes, "none")) {
+
+        } else if (Objects.equals(likes, "ascending")) {
+            posts.sort((o1, o2) -> o1.getLikes() - o2.getLikes());
+        } else {
+            posts.sort((o1, o2) -> o2.getLikes() - o1.getLikes());
         }
 
         int maxIndex = Math.min(pageSize * pageNum, posts.size());
