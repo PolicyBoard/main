@@ -1,0 +1,82 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f7f7f7;
+}
+.container {
+    display: flex;
+    max-width: 900px;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.login-form {
+    padding: 40px;
+    width: 50%;
+    box-sizing: border-box;
+}
+.login-form h2 {
+    margin-bottom: 20px;
+}
+.login-form h3 {
+    margin: 0;
+    margin-bottom: 10px;
+}
+.login-form p {
+    margin: 0;
+    margin-bottom: 20px;
+    color: gray;
+}
+.login-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+.login-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+.login-form input[type="checkbox"] {
+    width: auto;
+    margin-right: 10px;
+}
+.login-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.login-form .register {
+    text-align: center;
+    margin-top: 10px;
+}
+.login-form .register a {
+    color: #000;
+    text-decoration: none;
+}
+.illustration {
+    padding: 40px;
+    width: 50%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+.illustration img {
+    max-width: 100%;
+    height: auto;
+}
+.border {
+    border-left: 1px solid #ddd;
+}
