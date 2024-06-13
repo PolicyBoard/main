@@ -3,8 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" th:href="@{/boardcss/board.css}" />
 </head>
 <body>
-
+<div class="c_header">
+    <h1 th:classappend="${post.reports} >= 10 ? 'line-through' : ''">글 제목 : <span th:text="${post.title}"></span></h1>
+    <h3>작성자 : <span th:text="${post.author}"></span></h3>
+    <h3>url : <span th:text="${post.url}"></span></h3>
+    <h3>지역 : <span th:text="${post.location}"></span></h3>
+    <h3>성별 : <span th:text="${post.gender}"></span></h3>
+    <h3>일정 : <span th:text="${post.start_time}"></span> ~ <span th:text="${post.end_time}"></span></h3>
+    <h3>상태 : <span th:text="${post.status}"></span></h3>
+    <h3>작성 : <span th:text="${post.start_time}"></span></h3>
+    <h3>최종수정 : <span th:text="${post.end_time}"></span></h3>
+    <h3>최종수정 : <span th:text="${post.post_id}"></span></h3>
+</div>
+<div class="c_content">
+    <label th:utext="${post.content}"></label>
+    <div class="manage">
+        <form th:action="@{/board/report}" method="post" onsubmit="return confirmReport()">
+            <input type="hidden" name="post_id" th:value="${post.post_id}">
+            <button type="submit">종료신고</button>
+        </form>
+        <form th:action="@{/board/edit}" method="post">
+            <input type="hidden" name="id" th:value="${post.post_id}">
+            <button type="submit">수정</button>
+        </form>
+        <form th:action="@{/board/delete}" method="get" onsubmit="return confirmDelete()">
+            <input type="hidden" name="id" th:value="${post.post_id}">
+            <button type="submit">삭제</button>
+        </form>
+    </div>
+    신고수 : <span th:text="${post.reports}"></span>
+</div>
+<div class="c_notice">
+    <div th:each="comments : ${comment}" class="comment-card">
+        <div class="comment-header">
+            <span class="comment-author" th:text="${comments.author}">닉네임</span>
+            <span class="comment-time" th:text="${comments.create_time}">작성시간</span>
+        </div>
+        <div class="comment-body" th:text="${comments.comment_content}">댓글</div>
+        <div class="comment-actions">
+            <span>추천수: <span th:text="${comments.likes}">0</span></span>
+            <form th:action="@{/board/like}" method="post" onsubmit="return confirmLike()">
+                <input type="hidden" name="comment_id" th:value="${comments.comment_id}">
+                <input type="hidden" name="post_id" th:value="${post.post_id}">
+                <button type="submit" class="rc_btn">추천하기</button>
+            </form>
+        </div>
+    </div>
+    <form th:action="@{/board/incomment}" method="post">
+        <textarea id="custom_textarea" name="comment_content">ㅇㅇ</textarea>
+        <input type="hidden" name="post_id" th:value="${post.post_id}">
+        <input type="hidden" name="author" value="user1">
+        <input type="hidden" name="likes" value="0">
+        <button type="submit">댓글작성</button>
+    </form>
+</div>
 </body>
+<script>
+    window.addEventListener('load', adjustHeight);
+    window.addEventListener('resize', adjustHeight);
+
+    function adjustHeight() {
+        var content = document.querySelector('.c_content');
+        var contentHeight = content.scrollHeight;
+        if (contentHeight > 1000) {
+            content.style.height = contentHeight + 'px';
+        }
+    }
+</script>
+
+<script>
+    window.addEventListener('load', adjustHeight2);
+    window.addEventListener('resize', adjustHeight2);
+
+    function adjustHeight2() {
+        var notice = document.querySelector('.c_notice');
+        var noticeHeight = notice.scrollHeight;
+        if (noticeHeight > 500) {
+            notice.style.height = noticeHeight + 'px';
+        }
+    }
+</script>
+
+<script>
+    function confirmDelete() {
+        return confirm("정말로 삭제하시겠습니까?");
+    }
+
+    function confirmReport() {
+        return confirm("정말로 종료 신고하시겠습니까?");
+    }
+
+    function confirmLike() {
+        alert("추천이 완료되었습니다.");
+        return true;
+    }
+</script>
 </html>
