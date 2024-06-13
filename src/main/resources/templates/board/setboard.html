@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/boardcss/setboard.css}" />
+    <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
+</head>
+<body>
+<form action="/board/update" method="post">
+<div class="c_header">
+
+<h1>글 제목 : <input type="text" th:value="${post.title}" name="title"/></h1>
+<h3>작성자 : <span th:text="${post.author}"></span></h3>
+<h3>url : <input type="text" th:value="${post.url}" name="url"/></h3>
+
+    <h3>지역 : <select name="location">
+        <option value="무관" th:selected="${post.location == '무관'}">무관</option>
+        <option value="다수" th:selected="${post.location == '다수'}">다수</option>
+        <option value="서울" th:selected="${post.location == '서울'}">서울</option>
+        <option value="인천/경기" th:selected="${post.location == '인천/경기'}">인천/경기</option>
+        <option value="충청도" th:selected="${post.location == '충청도'}">충청도</option>
+        <option value="경상도" th:selected="${post.location == '경상도'}">경상도</option>
+        <option value="전라도" th:selected="${post.location == '전라도'}">전라도</option>
+        <option value="제주도" th:selected="${post.location == '제주도'}">제주도</option>
+    </select>
+    </h3>
+
+    <h3>성별 : <select name="gender">
+        <option value="남성" th:selected="${post.gender == '남성'}">남성</option>
+        <option value="여성" th:selected="${post.gender == '여성'}">여성</option>
+        <option value="무관" th:selected="${post.gender == '무관'}">무관</option>
+    </select>
+    </h3>
+
+    <h3>일정 :
+        <input type="text" name="start_time" th:value="${post.start_time}" placeholder="시작 시간"/> ~
+        <input type="text" name="end_time" th:value="${post.end_time}" placeholder="종료 시간"/>
+    </h3>
+
+    <h3>상태 :
+        <select name="status">
+            <option value="진행예정" th:selected="${post.status == '진행예정'}">진행예정</option>
+            <option value="진행중" th:selected="${post.status == '진행중'}">진행중</option>
+            <option value="종료" th:selected="${post.status == '종료'}">종료</option>
+        </select>
+
+
+    </h3>
+</div>
+<div class="c_content">
+
+
+    <textarea th:text="${post.content}" name="content" id="editor"></textarea>
+
+
+</div>
+
+
+    <input type="hidden" name="post_id" th:value="${post.post_id}">
+    <input type="hidden" name="author" th:value="${post.author}">
+
+
+    <div class="c_notice2">
+        <button type="submit">수정</button>
+    </div>
+</form>
+
+
+</body>
+
+<script>
+    ClassicEditor
+        .create(document.querySelector('#editor'), {
+            ckfinder: {
+                uploadUrl: '/board/ckfinder/connector',
+                options: {
+                    resourceType: 'Images'
+                }
+            },
+        })
+        .then(editor => {
+            console.log('Editor was initialized', editor);
+        })
+        .catch(error => {
+            console.error('There was a problem initializing the editor.', error);
+        });
+</script>
+</html>

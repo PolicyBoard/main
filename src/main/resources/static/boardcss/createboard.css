@@ -1,0 +1,94 @@
+/* Reset some default styles */
+body, h1, h3, input, select, textarea, button {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f7f9fc;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.c_header2 {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px 40px;
+    width: 1000px;
+}
+
+.c_header2 h1, .c_header2 h3 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.c_header2 h1 input, .c_header2 h3 input, .c_header2 h3 select {
+    width: calc(100% - 600px);
+    padding: 10px;
+    margin-left: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.c_header2 h1 input {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.c_header2 h3 {
+    display: flex;
+    align-items: center;
+}
+
+.c_header2 h3 select {
+    width: auto;
+}
+
+.c_header2 textarea {
+    width: 100%;
+    height: 200px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    resize: vertical;
+}
+
+.c_header2 button {
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.c_header2 button:hover {
+    background-color: #0056b3;
+}
+
+.ck-editor__editable {
+    height: 400px;
+}
+
+@media (max-width: 768px) {
+    .c_header2 {
+        width: 90%;
+        padding: 20px;
+    }
+    .c_header2 h1 input, .c_header2 h3 input, .c_header2 h3 select {
+        width: calc(100% - 150px);
+    }
+}
