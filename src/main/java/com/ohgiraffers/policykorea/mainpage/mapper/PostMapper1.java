@@ -10,7 +10,7 @@ import java.util.List;
 @Mapper
 public interface PostMapper1 {
 
-    @Select("SELECT * FROM Post")
+    @Select("SELECT * FROM Post order by post_id desc")
     List<PostDTO1> getAllPosts();
 
     // 페이징 처리를 위한 메서드

@@ -6,162 +6,167 @@
     <link rel="stylesheet" th:href="@{/style.css}" />
 </head>
 <body>
-    <div class="list">
-        <div class="div">
-            <div class="filter">
-<!--                <img class="img" src="img/filter.svg" />-->
-                <div class="label">Filter</div>
-            </div>
-            <div class="search">
-<!--                <img class="img" src="img/search.svg" />-->
-                <input class="text-wrapper" id="get-search" placeholder="검색어를 입력하세요"/>
-            </div>
-            <div class="text-wrapper-2">logo</div>
-            <button class="login-btn">로그인</button>
+<div class="list">
+    <div class="div">
 
-            <!-- 게시물 목록을 반복하여 표시 -->
-                <div th:each="post, iterStat : ${mainpage}" class="overlap-group"
-                     th:style="'top:' + (${iterStat.index % 10 * 120 + 207}) + 'px'"
-                     th:attr="data-gender=${post.gender}">
+        <div class="search">
+            <!--                <img class="img" src="img/search.svg" />-->
+            <input class="text-wrapper" id="get-search" placeholder="검색어를 입력하세요"/>
+        </div>
+        <div class="text-wrapper-2">logo</div>
+        <div class="text-wrapper-2">
+            <img th:src="@{/image/logo.png}" alt="logo" class="logo-img"/>
+        </div>
+        <!-- 게시물 목록을 반복하여 표시 -->
+        <div th:each="post, iterStat : ${mainpage}" class="overlap-group"
+             th:style="'top:' + (${iterStat.index % 10 * 120 + 207}) + 'px'"
+             th:attr="data-gender=${post.gender}">
 
-                    <div class="rectangle"></div>
-<!--                <img class="rectangle-2" th:src="@{${post.imageUrl}}" />-->
-                    <img class="rectangle-2"/>
-                    <div class="text-wrapper-3">이미지</div>
-                    <!-- 제목을 클릭하면 해당 게시물의 내용을 보여주는 페이지로 이동 -->
-                    <a th:href="@{'/post/content?p=' + ${post.postId}}">
-                        <p class="text-wrapper-4" th:text="${post.title}"></p>
-                    </a>
-                    <div class="text-wrapper-5" th:text="'지역 : ' + ${post.location}"></div>
-                    <div class="text-wrapper-6" th:text="'대상성별 : ' + ${post.gender}"></div>
-                    <div class="text-wrapper-7" th:text="'시작기간 : ' + ${post.startTime}"></div>
-                    <div class="text-wrapper-8" th:text="'종료기간 : ' + ${post.endTime}"></div>
-                    <div class="text-wrapper-9" th:text="'진행상태 : ' + ${post.status}"></div>
-                </div>
+            <div class="rectangle"></div>
+            <!--                <img class="rectangle-2" th:src="@{${post.imageUrl}}" />-->
 
-            <div class="pagination">
-                <p class="element">
-                    <a th:href="@{/post/mainpage/1}">&lt;-</a>
-                    <span th:each="i : ${#numbers.sequence(1, totalPages)}">
+            <!-- 신고수와 정책에 따른 조건부 클래스 추가 -->
+            <a th:href="@{'/board/post?id=' + ${post.postId}}">
+                <p class="text-wrapper-4"
+                   th:text="${post.title}"
+                   th:classappend="${post.reports >= 10 or post.status == '종료'} ? 'strikethrough' : ''"></p>
+            </a>
+            <div class="text-wrapper-5" th:text="'지역 : ' + ${post.location}"></div>
+            <div class="text-wrapper-6" th:text="'대상성별 : ' + ${post.gender}"></div>
+            <div class="text-wrapper-7" th:text="'시작기간 : ' + ${post.startTime}"></div>
+            <div class="text-wrapper-8" th:text="'종료기간 : ' + ${post.endTime}"></div>
+            <div class="text-wrapper-9" th:text="'진행상태 : ' + ${post.status}"></div>
+
+        </div>
+
+        <div class="pagination">
+            <p class="element">
+                <a th:href="@{/post/mainpage/1}">&lt;-</a>
+                <span th:each="i : ${#numbers.sequence(1, totalPages)}">
                         <a th:href="@{/post/mainpage/{pageNum}(pageNum=${i})}" th:text="${i}"></a>
                     </span>
-                    <a th:href="@{/post/mainpage/{pageNum}(pageNum=${totalPages})}">-&gt;</a>
-                </p>
-            </div>
-<!--            <p class="element">&lt;- 1 2 3 4 5 6 7 8 9 10 -&gt;</p>-->
-            <div class="overlap-group-2">
-                <div class="overlap-3">
-                    <div class="text-wrapper-10">지역</div>
-                </div>
-                <div class="overlap-4"></div>
-                <div class="text-wrapper-11">성별</div>
-                <select id="gender-select">
-                    <option value="none">선택 안함</option>
-                    <option value="male">남성</option>
-                    <option value="female">여성</option>
-                </select>
-                <div class="text-wrapper-12">진행상태</div>
-<!--                <div class="arrow-wrapper"><img class="arrow" src="img/arrow-4.svg" /></div>-->
-<!--                <div class="img-wrapper"><img class="arrow" src="img/arrow-3.svg" /></div>-->
-                <select id="active-select">
-                    <option value="none">선택 안함</option>
-                    <option value="active">진행 중</option>
-                    <option value="inactive">진행 종료</option>
-                </select>
-                <!-- 새로운 요소들 추가 -->
-                <div class="recommend-wrapper">추천순</div>
-                <select id="recommend-select">
-                    <option value="none">선택 안함</option>
-                    <option value="ascending">오름차순</option>
-                    <option value="descending">내림차순</option>
-                </select>
-                <button class="confirm-button">확인</button>
-            </div>
+                <a th:href="@{/post/mainpage/{pageNum}(pageNum=${totalPages})}">-&gt;</a>
+            </p>
         </div>
+        <!--            <p class="element">&lt;- 1 2 3 4 5 6 7 8 9 10 -&gt;</p>-->
+        <div class="overlap-group-2">
+
+
+            <div class="text-wrapper-11">성별</div>
+            <select id="gender-select">
+                <option value="none">선택</option>
+                <option value="무관">무관</option>
+                <option value="남성">남성</option>
+                <option value="여성">여성</option>
+            </select>
+            <div class="text-wrapper-12">진행상태</div>
+            <!--                <div class="arrow-wrapper"><img class="arrow" src="img/arrow-4.svg" /></div>-->
+            <!--                <div class="img-wrapper"><img class="arrow" src="img/arrow-3.svg" /></div>-->
+            <select id="active-select">
+                <option value="none">선택</option>
+                <option value="진행예정">진행예정</option>
+                <option value="진행중">진행중</option>
+                <option value="종료">종료</option>
+            </select>
+            <!-- 새로운 요소들 추가 -->
+            <div class="recommend-wrapper">추천순</div>
+
+            <select id="recommend-select">
+                <option value="none">선택 안함</option>
+                <option value="ascending">오름차순</option>
+                <option value="descending">내림차순</option>
+            </select>
+            <button class="confirm-button">확인</button>
+
+            <form action="/board/createboard" method="get">
+                <button class="dd">글쓰기</button>
+            </form>
+        </div>
+
     </div>
+</div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const genderSelect = document.getElementById('gender-select');
-            const activeSelect = document.getElementById('active-select');
-            const getSearch = document.getElementById('get-search');
-            const orderLikes = document.getElementById('recommend-select');
-            const confirmButton = document.querySelector('.confirm-button');
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const genderSelect = document.getElementById('gender-select');
+        const activeSelect = document.getElementById('active-select');
+        const getSearch = document.getElementById('get-search');
+        const orderLikes = document.getElementById('recommend-select');
+        const confirmButton = document.querySelector('.confirm-button');
 
-            // 확인 버튼 클릭 시 이벤트 처리
-            confirmButton.addEventListener('click', function(event) {
+        // 확인 버튼 클릭 시 이벤트 처리
+        confirmButton.addEventListener('click', function(event) {
 
+            const selectedGender = genderSelect.value;
+            const selectedActive = activeSelect.value;
+            const selectedSearch = getSearch.value;
+            const selectedOrder = orderLikes.value;
+            // 성별 선택에 따라 AJAX 요청을 보냄
+            fetchPosts(selectedGender, selectedActive, selectedSearch, selectedOrder);
+        });
+        document.addEventListener("keydown", function (event){
+            if (event.keyCode == 13) {
                 const selectedGender = genderSelect.value;
                 const selectedActive = activeSelect.value;
                 const selectedSearch = getSearch.value;
                 const selectedOrder = orderLikes.value;
                 // 성별 선택에 따라 AJAX 요청을 보냄
                 fetchPosts(selectedGender, selectedActive, selectedSearch, selectedOrder);
+            }
+        })
+
+        function fetchPosts(gender, active, search, likes) {
+            let url = '/post/mainpage/1'; // 수정된 URL
+
+            url += '?gender=' + gender; // gender 파라미터 추가
+
+            url += '&active=' + active;
+
+            url += '&search=' + search;
+
+            url += '&likes=' + likes;
+
+            location.href = url;
+            // fetch(url)
+            //     .then(response => {console.log(response)})
+            //     .then(posts => {
+            //         // 받아온 게시물을 표시
+            //         displayPosts(posts);
+            //     })
+            //     .catch(error => console.error('Error fetching posts:', error));
+        }
+
+        // 받아온 게시물을 화면에 표시하는 함수
+        function displayPosts(posts) {
+            const postsContainer = document.querySelector('.list');
+            postsContainer.innerHTML = ''; // 기존 게시물 삭제
+            // 받아온 게시물을 화면에 표시
+            posts.forEach(post => {
+                const postElement = createPostElement(post);
+                postsContainer.appendChild(postElement);
             });
-            document.addEventListener("keydown", function (event){
-                if (event.keyCode == 13) {
-                    const selectedGender = genderSelect.value;
-                    const selectedActive = activeSelect.value;
-                    const selectedSearch = getSearch.value;
-                    const selectedOrder = orderLikes.value;
-                    // 성별 선택에 따라 AJAX 요청을 보냄
-                    fetchPosts(selectedGender, selectedActive, selectedSearch, selectedOrder);
-                }
-            })
+        }
 
-            function fetchPosts(gender, active, search, likes) {
-                let url = '/post/mainpage/1'; // 수정된 URL
+        // 게시물 요소를 생성하는 함수
+        function createPostElement(post) {
+            const postElement = document.createElement('div');
+            postElement.className = 'overlap-group';
+            postElement.dataset.gender = post.gender.toLowerCase();
 
-                url += '?gender=' + gender; // gender 파라미터 추가
+            // 게시물 요소 구성 (여기에 필요한 HTML을 추가)
 
-                url += '&active=' + active;
+            return postElement;
+        }
 
-                url += '&search=' + search;
+        // // 초기화 시 "선택 안함"에 해당하는 게시물을 가져옴
+        // fetchPosts('');
 
-                url += '&likes=' + likes;
-
-                location.href = url;
-                // fetch(url)
-                //     .then(response => {console.log(response)})
-                //     .then(posts => {
-                //         // 받아온 게시물을 표시
-                //         displayPosts(posts);
-                //     })
-                //     .catch(error => console.error('Error fetching posts:', error));
-            }
-
-            // 받아온 게시물을 화면에 표시하는 함수
-            function displayPosts(posts) {
-                const postsContainer = document.querySelector('.list');
-                postsContainer.innerHTML = ''; // 기존 게시물 삭제
-                // 받아온 게시물을 화면에 표시
-                posts.forEach(post => {
-                    const postElement = createPostElement(post);
-                    postsContainer.appendChild(postElement);
-                });
-            }
-
-            // 게시물 요소를 생성하는 함수
-            function createPostElement(post) {
-                const postElement = document.createElement('div');
-                postElement.className = 'overlap-group';
-                postElement.dataset.gender = post.gender.toLowerCase();
-
-                // 게시물 요소 구성 (여기에 필요한 HTML을 추가)
-
-                return postElement;
-            }
-
-            // // 초기화 시 "선택 안함"에 해당하는 게시물을 가져옴
-            // fetchPosts('');
-
-            // // 페이지 로드 시 선택한 성별에 따라 게시물 필터링
-            // genderSelect.addEventListener('change', function() {
-            //     const selectedGender = genderSelect.value;
-            //     fetchPosts(selectedGender);
-            // });
-        });
-    </script>
-
+        // // 페이지 로드 시 선택한 성별에 따라 게시물 필터링
+        // genderSelect.addEventListener('change', function() {
+        //     const selectedGender = genderSelect.value;
+        //     fetchPosts(selectedGender);
+        // });
+    });
+</script>
 </body>
 </html>

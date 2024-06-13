@@ -102,14 +102,22 @@
     position: absolute;
     height: 30px;
     top: 41px;
-    left: 68px;
-    font-family: "Inter-SemiBold", Helvetica;
-    font-weight: 600;
+    left: 125px;
     color: #000000;
     font-size: 20px;
     letter-spacing: -0.2px;
     line-height: 30px;
     white-space: nowrap;
+}
+
+.logo-img {
+    width: 40px;
+    height: 40px;
+    /* 위치를 조정하기 위해 margin이나 padding을 추가할 수 있습니다. */
+    margin: 0; /* 필요에 따라 조정 */
+    padding: 0; /* 필요에 따라 조정 */
+    /* 위치 조정을 위한 추가 스타일 */
+    display: block; /* 필요에 따라 다른 값을 사용할 수 있음 */
 }
 
 .list .login-btn {
@@ -352,4 +360,15 @@ select, input {
     width: 150px; /* 레이아웃의 패딩 고려하여 조절 */
     /* 원하는 스타일 추가 */
 }
-
+.strikethrough {
+    text-decoration: line-through;
+}
+.dd {margin-top: 200px;
+    width:100px;
+    height: 50px;
+    font-size: 20px;
+    background: skyblue;
+    color: white;
+    border-radius: 10px;
+    font-family: Arial;
+}

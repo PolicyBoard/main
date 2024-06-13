@@ -23,7 +23,7 @@ public class LoginController {
         Member member1 = loginService.getLoginId(member.getEmail(), member.getPassword());
 
         System.out.println(member1);
-        return "";
+        return "redirect:/post/mainpage/1";
 
 
     }

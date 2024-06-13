@@ -75,7 +75,7 @@ public class PostController {
         Post post = postService.getPostById(id);
         System.out.println(post.getPost_id());
         postService.deletePost(id);
-        return "redirect:/";
+        return "redirect:/post/mainpage/1";
     }
 
     @GetMapping("/board")
