@@ -9,7 +9,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class PolicyKoreaApplication {
 
     public static void main(String[] args) {
+
         SpringApplication.run(PolicyKoreaApplication.class, args);
+
     }
 
 }

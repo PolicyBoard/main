@@ -1,0 +1,355 @@
+:root {
+    --presets-body2-font-family: "Inter", Helvetica;
+    --presets-body2-font-weight: 400;
+    --presets-body2-font-size: 16px;
+    --presets-body2-letter-spacing: 0px;
+    --presets-body2-line-height: 24px;
+    --presets-body2-font-style: normal;
+}
+
+.list {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+}
+
+.list .div {
+    background-color: #ffffff;
+    width: 1480px;
+    height: 1480px;
+    position: relative;
+    min-height: calc(100vh - 20px);
+}
+
+.list .filter {
+    display: inline-flex;
+    height: 40px;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 16px 8px 12px;
+    position: absolute;
+    top: 147px;
+    left: 59px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    border: 1px solid;
+    border-color: #e0e0e0;
+}
+
+.list .img {
+    position: relative;
+    width: 24px;
+    height: 24px;
+}
+
+.list .label {
+    width: fit-content;
+    white-space: nowrap;
+    position: relative;
+    margin-top: -1px;
+    font-family: var(--presets-body2-font-family);
+    font-weight: var(--presets-body2-font-weight);
+    color: #828282;
+    font-size: var(--presets-body2-font-size);
+    letter-spacing: var(--presets-body2-letter-spacing);
+    line-height: var(--presets-body2-line-height);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    font-style: var(--presets-body2-font-style);
+}
+
+.list .search {
+    display: flex;
+    width: 405px;
+    height: 40px;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 16px 8px 12px;
+    position: absolute;
+    top: 83px;
+    left: 472px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    border: 1px solid;
+    border-color: #e0e0e0;
+}
+
+.list .text-wrapper {
+    flex: 1;
+    position: relative;
+    margin-top: -1px;
+    font-family: var(--presets-body2-font-family);
+    font-weight: var(--presets-body2-font-weight);
+    color: #828282;
+    font-size: var(--presets-body2-font-size);
+    letter-spacing: var(--presets-body2-letter-spacing);
+    line-height: var(--presets-body2-line-height);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    font-style: var(--presets-body2-font-style);
+}
+
+.list .text-wrapper-2 {
+    position: absolute;
+    height: 30px;
+    top: 41px;
+    left: 68px;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-weight: 600;
+    color: #000000;
+    font-size: 20px;
+    letter-spacing: -0.2px;
+    line-height: 30px;
+    white-space: nowrap;
+}
+
+.list .login-btn {
+    position: absolute;
+    top: 41px; /* 로고와 같은 높이로 설정 */
+    right: 68px; /* 로고에서 오른쪽으로 동일한 간격으로 설정 */
+    padding: 5px 10px; /* 버튼의 padding 조정 */
+    font-family: "Inter-SemiBold", Helvetica;
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 20px;
+    letter-spacing: -0.2px;
+    background-color: #000000; /* 배경색 지정 */
+    border: 1px solid #000000; /* 테두리 추가 */
+    border-radius: 5px; /* 버튼을 둥글게 만들기 */
+    cursor: pointer; /* 마우스 커서를 포인터로 변경하여 버튼처럼 보이도록 설정 */
+}
+
+.list .overlap {
+    position: absolute;
+    width: 753px;
+    height: 105px;
+    top: 206px;
+    left: 310px;
+}
+
+.list .rectangle {
+    width: 753px;
+    height: 105px;
+    border: 1px solid;
+    border-color: #000000;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.list .rectangle-2 {
+    width: 104px;
+    height: 105px;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+}
+
+.list .text-wrapper-3 {
+    top: 40px;
+    left: 30px;
+    text-align: right;
+    position: absolute;
+    font-family: "Inter-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 24px;
+    white-space: nowrap;
+}
+
+.list .text-wrapper-4 {
+    position: absolute;
+    width: 539px;
+    top: 0px;
+    left: 147px;
+    font-family: "Inter-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 24px;
+    white-space: nowrap;
+}
+
+.list .text-wrapper-5 {
+    top: 35px;
+    left: 147px;
+    position: absolute;
+    font-family: "Inter-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 24px;
+    white-space: nowrap;
+}
+
+.list .text-wrapper-6 {
+    top: 34px;
+    left: 542px;
+    position: absolute;
+    font-family: "Inter-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 24px;
+    white-space: nowrap;
+}
+
+.list .text-wrapper-7 {
+    top: 53px;
+    left: 147px;
+    position: absolute;
+    font-family: "Inter-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 24px;
+    white-space: nowrap;
+}
+
+.list .text-wrapper-8 {
+    top: 71px;
+    left: 147px;
+    position: absolute;
+    font-family: "Inter-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 24px;
+    white-space: nowrap;
+}
+
+.list .text-wrapper-9 {
+    top: 59px;
+    left: 542px;
+    position: absolute;
+    font-family: "Inter-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 24px;
+    white-space: nowrap;
+}
+
+.list .overlap-group {
+    position: absolute;
+    width: 753px;
+    height: 105px;
+    left: 310px;
+}
+
+.list .overlap-2 {
+    position: absolute;
+    width: 753px;
+    height: 105px;
+    top: 504px;
+    left: 310px;
+}
+
+.list .p {
+    width: 539px;
+    top: 17px;
+    left: 147px;
+    text-shadow: 0px 4px 4px #00000040;
+    text-decoration: line-through;
+    position: absolute;
+    font-family: "Inter-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 24px;
+    white-space: nowrap;
+}
+
+.list .element {
+    width: 194px;
+    top: 1422px;
+    left: 607px;
+    bottom: 20px;
+    position: absolute;
+    font-family: "Inter-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 24px;
+    white-space: nowrap;
+}
+
+.overlap-group-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px; /* 요소 간의 간격 */
+    padding-top: 20px; /* 상단 패딩 */
+    position: absolute;
+    width: 231px;
+    height: 500px;
+    top: 207px;
+    left: 40px;
+    border: 1px solid #000000;
+}
+
+.overlap-4, .arrow-wrapper, .img-wrapper, .recommend-count-wrapper, .confirm-button {
+    width: 123px;
+    height: 31px;
+    border: 1px solid #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.recommend-wrapper {
+    height: auto; /* 높이 자동 조절 */
+    font-family: "Inter-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.text-wrapper-11, .text-wrapper-12 {
+    height: auto; /* 높이 자동 조절 */
+    font-family: "Inter-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.confirm-button {
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+select, input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.select-box {
+    width: 150px; /* 레이아웃의 패딩 고려하여 조절 */
+    /* 원하는 스타일 추가 */
+}
+
