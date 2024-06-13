@@ -38,4 +38,9 @@ public class PostService {
     public PostDTO getPostById(Long postId) {
         return postMapper.getPostById(postId);
     }
+
+    // 성별로 게시물 가져오기
+    public List<PostDTO> getPostsByGender(String gender) {
+        return postMapper.getPostsByGender(gender);
+    }
 }

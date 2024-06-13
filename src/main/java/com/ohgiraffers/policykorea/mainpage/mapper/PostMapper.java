@@ -23,4 +23,8 @@ public interface PostMapper {
 
     @Select("SELECT * FROM Post WHERE post_id = #{postId}")
     PostDTO getPostById(Long postId);
+
+    // 성별로 게시물 가져오기
+    @Select("SELECT * FROM Post WHERE gender = #{gender}")
+    List<PostDTO> getPostsByGender(@Param("gender") String gender);
 }
