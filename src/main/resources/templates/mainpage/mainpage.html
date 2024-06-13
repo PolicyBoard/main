@@ -56,7 +56,7 @@
                 <div class="overlap-4"></div>
                 <div class="text-wrapper-11">성별</div>
                 <select id="gender-select">
-                    <option value="">선택 안함</option>
+                    <option value="none">선택 안함</option>
                     <option value="male">남성</option>
                     <option value="female">여성</option>
                 </select>
@@ -64,14 +64,14 @@
 <!--                <div class="arrow-wrapper"><img class="arrow" src="img/arrow-4.svg" /></div>-->
 <!--                <div class="img-wrapper"><img class="arrow" src="img/arrow-3.svg" /></div>-->
                 <select id="active-select">
-                    <option value="">선택 안함</option>
+                    <option value="none">선택 안함</option>
                     <option value="active">진행 중</option>
                     <option value="inactive">진행 종료</option>
                 </select>
                 <!-- 새로운 요소들 추가 -->
                 <div class="recommend-wrapper">추천순</div>
                 <select id="recommend-select">
-                    <option value="">선택 안함</option>
+                    <option value="none">선택 안함</option>
                     <option value="ascending">오름차순</option>
                     <option value="descending">내림차순</option>
                 </select>
@@ -83,23 +83,24 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const genderSelect = document.getElementById('gender-select');
+            const activeSelect = document.getElementById('active-select');
             const confirmButton = document.querySelector('.confirm-button');
 
             // 확인 버튼 클릭 시 이벤트 처리
             confirmButton.addEventListener('click', function(event) {
 
                 const selectedGender = genderSelect.value;
+                const selectedActive = activeSelect.value;
                 // 성별 선택에 따라 AJAX 요청을 보냄
-                fetchPosts(selectedGender);
+                fetchPosts(selectedGender, selectedActive);
             });
 
-            function fetchPosts(gender) {
+            function fetchPosts(gender, active) {
                 let url = '/post/mainpage/1'; // 수정된 URL
 
-                // 선택한 성별에 따라 URL 구성
-                if (gender === 'male' || gender === 'female') {
-                    url += '?gender=' + gender; // gender 파라미터 추가
-                }
+                url += '?gender=' + gender; // gender 파라미터 추가
+
+                url += '&active=' + active;
 
                 location.href = url;
                 // fetch(url)

@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/post")
@@ -28,21 +30,31 @@ public class PostController {
     // 첫 페이지를 보여주는 메서드
     @GetMapping("/firstpage")
     public String getFirstPage(Model model) {
-        return getPage(null,1, model);
+        return getPage("none","none",1, model);
     }
 
     // 특정 페이지를 보여주는 메서드
     @GetMapping("/mainpage/{pageNum}")
-    public String getPage(@RequestParam(required = false) String gender, @PathVariable int pageNum, Model model) {
+    public String getPage(@RequestParam(required = false) String active, @RequestParam(required = false) String gender, @PathVariable int pageNum, Model model) {
         int pageSize = 10; // 페이지당 게시물 수
         model.addAttribute("currentPage", pageNum);
 
+        System.out.println(gender);
+        System.out.println(active);
+
         List<PostDTO> posts;
-        if (gender != null && !gender.isEmpty()) {
+        if (!Objects.equals(gender, "none") && gender != null) {
             posts = postService.getPostsByGender(gender);
         } else {
             posts = postService.getAllPosts();
         }
+
+        if (Objects.equals(active, "none") || active == null) {
+
+        } else {
+            posts = posts.stream().filter(value -> value.getStatus().equals(active)).collect(Collectors.toList());
+        }
+
         int maxIndex = Math.min(pageSize * pageNum, posts.size());
         int totalPages = (posts.size() + pageSize - 1)/pageSize; // 전체 페이지 수 계산
         posts = posts.subList(pageSize * (pageNum - 1), maxIndex);
